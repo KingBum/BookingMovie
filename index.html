@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="app.css" />
+    <title>Movie Seat Booking</title>
+  </head>
+  <body>
+    <div class="preloader"></div>
+    <section class="popup-screen">
+      <div class="popup-box">
+        <i class="fas fa-times close-btn"></i>
+        <h2>chào mừng thành viên mới</h2>
+        <p>
+          với lần đầu tiên truy cập vào website của chúng tôi, quý khách sẽ nhận
+          được voucher 100K khi đăng kí ngay hôm nay
+        </p>
+        <a href="#" class="btn">Click Nhận ngay!!!</a>
+        <div class="count-popup"></div>
+      </div>
+    </section>
+    <!-- <a href="./home.html">Click to back home</a> -->
+    <section class="container-header">
+      <header>
+        <div class="header-logo">
+          <a href="#" class="logo"
+            ><img src="./img/Logo QĐ.png" alt="logo"
+          /></a>
+          <p class="heading"><span>Q</span>uốc<span>Đ</span>ạt</p>
+        </div>
+        <nav>
+          <a href="#">Lịch chiếu</a>
+          <a href="#">Phim</a>
+          <a href="#">Khuyễn mãi</a>
+          <a href="#">Blog phim</a>
+          <a href="#">thành viên</a>
+        </nav>
+        <div class="login-sign">
+          <a href="#">Đăng nhập</a>
+          <span>/</span>
+          <a href="#">Đăng kí</a>
+        </div>
+      </header>
+    </section>
+    <section class="container-seat">
+      <div class="movie-container">
+        <label for="">Chọn một bộ phim:</label>
+        <select name="" id="movie">
+          <option value="10">bố già ($10)</option>
+          <option value="12">Conan ($12)</option>
+          <option value="8">rừng thế mạng ($8)</option>
+          <option value="9">siêu cuối trùng đẳng ($9)</option>
+          <option value="11">lật mặt : 48h ($11)</option>
+        </select>
+      </div>
+
+      <ul class="showcase">
+        <li>
+          <div class="seat"></div>
+          <small>Trống</small>
+        </li>
+        <li>
+          <div class="seat selected"></div>
+          <small>Đang chọn</small>
+        </li>
+        <li>
+          <div class="seat occupied"></div>
+          <small>Đã chọn</small>
+        </li>
+      </ul>
+
+      <div class="container">
+        <div class="screen"></div>
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat"></div>
+          <div class="seat occupied"></div>
+        </div>
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+        <div class="row">
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+        <div class="row">
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+      </div>
+
+      <p class="text">
+        You have selected
+        <span id="count">0</span>
+        seats for a price of
+        <span id="total">$0</span>
+      </p>
+      <a href="#" class="btn">Đặt vé ngay</a>
+    </section>
+    <section class="container-slider col-main">
+      <div class="swiper mySwiper main-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="./img/pic1.jpeg" alt="" /></div>
+          <div class="swiper-slide"><img src="./img/pic2.jpg" alt="" /></div>
+          <div class="swiper-slide"><img src="./img/pic3.jpg" alt="" /></div>
+          <div class="swiper-slide"><img src="./img/pic4.jpg" alt="" /></div>
+          <div class="swiper-slide"><img src="./img/pic5.jpg" alt="" /></div>
+          <div class="swiper-slide"><img src="./img/pic6.jpg" alt="" /></div>
+          <div class="swiper-slide"><img src="./img/pic7.jpg" alt="" /></div>
+          <div class="swiper-slide"><img src="./img/pic8.jpg" alt="" /></div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <!-- http://127.0.0.1:5500/22-SignGoogle/index.html -->
+  </body>
+</html>
