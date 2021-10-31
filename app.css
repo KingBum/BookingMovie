@@ -15,6 +15,7 @@
 :root{
     --main-color: rgb(111, 234, 246);
     --second-color: #ff5400;
+    --background-color: #031327;
     --text-color: #7e8eaa;
 
 }
@@ -64,7 +65,7 @@ body{
     padding: .8rem 3rem;
     font-size: 1.7rem;
     border-radius: .5rem;
-    background-color: #031327;
+    background-color: var(--background-color);
     color: var(--main-color);
 }
 
@@ -107,7 +108,7 @@ body{
 
 .close-btn:hover{
     opacity: 1;
-    color: #031327;
+    color: var(--background-color);
 }
 
 .popup-box{
@@ -148,8 +149,8 @@ body{
 
 /* Header */
 .container-header{
-    background-color: #031327;
-    position: fixed;
+    background-color: var(--background-color);
+    /* position: fixed; */
     top: 0;
     left: 0;
     right: 0;
@@ -186,20 +187,8 @@ header nav a{
 }
 
 header nav a:hover{
-    -webkit-mask-image: linear-gradient(-75deg, rgba(111, 234, 246,.6) 30%, #6feaf6 50%, rgba(111, 234, 246,.6) 70%);
-    -webkit-mask-size: 100%;
-    animation: shine 1s infinite;
+    
     color: var(--main-color);
-}
-
-@keyframes shine {
-  from {
-    -webkit-mask-position: 150%;
-  }
-  
-  to {
-    -webkit-mask-position: -50%;
-  }
 }
 
 header .login-sign a{
@@ -317,6 +306,9 @@ p.text span{
 
 
 /* Container Slider */
+.container-slider{
+    padding: 5rem 0;
+}
 
 .container-slider .content{
     text-align: center;
@@ -341,4 +333,236 @@ p.text span{
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+.container-slider .main-slider .swiper-slide img:hover{
+    transform: scale(1.1);
+}
+
+.container-slider .main-slider .swiper-slide .title{
+    position: absolute;
+    top: -10rem;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 2rem;
+}
+
+.container-slider .main-slider .swiper-slide:hover .title{
+    top: 0;
+}
+
+.container-slider .main-slider .swiper-slide .icons{
+    position: absolute;
+    bottom: -10rem;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 2rem;
+}
+
+.container-slider .main-slider .swiper-slide .icons a{
+    font-size: 2rem;
+    margin: .5rem 1rem;
+    color: #fff;
+}
+  
+.container-slider .main-slider .swiper-slide .icons a:hover{
+    color: var(--main-color);
+}
+.container-slider .main-slider .swiper-slide:hover .icons{
+    bottom: 0;
+}
+
+/* Weather forecast */
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container-weather{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 0;
+    text-align: center;
+}
+.search-icon {
+    margin-right: 5px;
+    position: absolute;
+    left: -3rem;
+}
+
+.search-bar {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 20px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid white;
+    margin-right: 5rem;
+}
+
+.container-weather .main-section .search-bar input{
+    padding: 3px 3px 3px 20px;
+    background: transparent;
+    height: 20px;
+    color: #fff;
+    text-align: center; 
+}
+
+.container-weather .main-section .search-bar input::placeholder{
+    color: #777;
+}
+
+.container-weather .main-section .info-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    font-size: 1.5rem;
+}
+
+.container-weather .main-section .info-wrapper .right-info .temperature{
+    font-size: 4rem;
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+/* Login signup */
+.login-signup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-signup .form{
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(.5rem);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    text-align: center;
+    gap: 3rem;
+}
+
+.login-signup .form .login-form{
+    position: relative;
+}
+
+.login-signup .form .close-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    font-size: 3rem;
+    margin: 0;
+}
+
+
+.login-signup .form .login-form,
+.login-signup .form .signup-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(2, 3, 75);
+    padding: 4rem 5rem;
+    width: 50rem;
+    height: 50rem;
+    background-color: var(--background-color);
+}
+
+.login-signup .form .signup-form{
+    display: none;
+}
+
+.login-signup .form i{
+    z-index: 2000;
+    color: #ccc;
+    font-size: 6.5rem;
+    margin-bottom: 3rem;
+}
+
+.login-signup .form .user-input{
+    width: 32rem;
+    height: 5.5rem;
+    margin-bottom: 3rem;
+    background-color: var(--text-color);
+    color: #fff;
+    font-size: 1.8rem;
+    border-radius: 3rem;
+    padding: .5rem 1rem;
+    transition: all .3s ease;
+}
+
+.login-signup .form .user-input::placeholder{
+    color: #333;
+}
+
+.login-signup .form .user-input:hover,
+.login-signup .form .user-input:focus{
+    border-left: .8rem solid var(--main-color);
+    border-right: .8rem solid var(--main-color);
+    box-shadow: 0 0 5rem rgba(111, 234, 246, 0.3);
+}
+
+.login-signup .form .btn{
+    width: 80%;
+    height: auto;
+    background-color: var(--main-color);
+    color: #031327;
+    border-radius: 3rem;
+    opacity: .8;
+}
+
+.login-signup .form .btn:hover{
+    opacity: 1;
+}
+
+.login-signup .form .options-01{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 40rem;
+    margin-bottom: 3rem;
+}
+
+.login-signup .form .options-01 input{
+    margin-right: .5rem;
+}
+
+.login-signup .form a{
+    color: #777;
+    font-style: italic;
+    font-size: 1.4rem;
+}
+
+.login-signup .form .options-02,
+.login-signup .form .options-03{
+    color: #777;
+    font-size: 1.4rem;
+    width: 40rem;
+}
+
+.login-signup .form .options-02 a,
+.login-signup .form .options-03 a{
+    color: var(--main-color);
 }

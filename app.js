@@ -44,12 +44,26 @@ function setMovieData(movieIndex, moviePrice){
     localStorage.setItem('selectedMoviePrice', moviePrice)
 }
 
-// let hmtl = ''
-// let displayMovie = data.map((item)=>{
-//     console.log(item)
-//     return hmtl +=`<option value="${item.price}">${item.name} ($${item.price})</option>`
-// })
-// movieSelect.innerHTML = hmtl
+
+// Render from Js
+let displayMovie = data.map((item)=>{
+    let nameMovie = ''
+    return nameMovie +=`<option value="${item.price}">${item.name} ($${item.price})</option>`
+})
+movieSelect.innerHTML = displayMovie
+let auto = data.map((e)=>{
+    let slideMovie = ''
+    return slideMovie += `<div class="swiper-slide">
+    <img src="${e.img}" alt="" />
+    <h3 class="title">${e.name}</h3>
+    <div class="icons">
+      <a href="#" class="fas fa-heart"></a>
+      <a href="#" class="fas fa-share"></a>
+      <a href="#" class="fas fa-eye"></a>
+    </div>
+  </div>`
+})
+$('.swiper-wrapper').innerHTML = auto
 
 
 
@@ -102,6 +116,34 @@ seats.forEach(element => {
 
 updateSelectedCount() //render UI localStorage last loading
 
+
+// login-signup
+function handleSinUp(){
+    $('.options-02 a').addEventListener('click', ()=>{
+        $('.signup-form').style.display = 'flex'
+        $('.login-form').style.display = 'none'
+    })
+    
+    $('.options-03 a').addEventListener('click', ()=>{
+        $('.login-form').style.display = 'flex'
+        $('.signup-form').style.display = 'none'
+    })
+    $('.form .close-btn').addEventListener('click', ()=>{
+        $('.login-signup .form').style.visibility = 'hidden'
+    })
+}
+
+$('.login-sign').addEventListener('click', ()=>{
+    $('.login-signup .form').style.visibility = 'visible'
+    handleSinUp()
+})
+
+$('.popupBtn').addEventListener('click', ()=>{
+    $('.login-signup .form').style.visibility = 'visible'
+    popupScreen.style.display = 'none'
+    document.cookie = "userName=ipUser"
+    handleSinUp()
+})
 
 
 
