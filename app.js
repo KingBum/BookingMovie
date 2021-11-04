@@ -136,14 +136,14 @@ $$(".title-bottom").forEach((e, index) => {
 $(".login-sign a").addEventListener("click", () => {
   $(".login-form").classList.toggle("active");
 });
-$(".submit-user").addEventListener("click", (e) => {
+$(".submit-user").addEventListener("click",async (e) => {
   e.preventDefault()
-  let idUser = $("#username").value;
+  let idUser = await $("#username").value;
   let imgURL = `http://my.uda.edu.vn/filetailen/anhsv/${idUser}.jpg`;
   $('.control-user').classList.add('active')
   $('.login-user').classList.remove('active')
   $(".login-form").classList.remove("active");
-  $(".avatar-user").innerHTML = `<img class="avatar-user" src="${imgURL}" alt="">`
+  $(".avatar-user").innerHTML = `<img loading="lazy" class="avatar-user" src="${imgURL}" alt="">`
   $("#username").value = '';
   $("#password").value = '';
 });
@@ -228,8 +228,8 @@ var swiper = new Swiper(".main-slider", {
     el: ".swiper-pagination",
   },
   loop: true,
-//   autoplay: {
-//     delay: 3000,
-//     disableOnInteraction: false,
-//   },
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
 });
