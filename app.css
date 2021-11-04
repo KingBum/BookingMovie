@@ -13,7 +13,7 @@
 }
 
 :root{
-    --main-color: rgb(111, 234, 246);
+    --main-color: #20bf7d;
     --second-color: #ff5400;
     --background-color: #031327;
     --text-color: #7e8eaa;
@@ -27,9 +27,9 @@ html{
 }
 
 body{
-    background-color: #242333;
+    background: url(./img/bg.png) no-repeat center;
     color: #fff;
-    height: 100vh;
+    height: 100%;
     font-size: 1.6rem;
 }
 
@@ -42,7 +42,7 @@ body{
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 100000;
 }
 
 .col-main{
@@ -52,6 +52,9 @@ body{
 
 .heading{
     letter-spacing: .5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 3.2rem;
 }
 
 .heading span{
@@ -173,6 +176,10 @@ header{
     justify-content: center;
 }
 
+.header-logo .heading{
+    margin-bottom: 0;
+}
+
 .header-logo a img{
     width: 5rem;
     height: 5rem;
@@ -182,12 +189,12 @@ header{
 header nav a{
     text-transform: uppercase;
     color: #fff;
-    margin: 0 1rem;
+    margin: 0 3rem;
     transition: .5s;
 }
 
 header nav a:hover{
-    
+    border-bottom: .1rem solid var(--main-color);
     color: var(--main-color);
 }
 
@@ -206,7 +213,6 @@ header .login-sign a:hover{
 /* Movie Seat */
 
 .container-seat{
-    margin-top: 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -324,9 +330,9 @@ p.text span{
 
 .container-slider .main-slider .swiper-slide{
     overflow: hidden;
-    border-radius: .5rem;
-    height: 50rem;
-    width: 35rem;
+    border-radius: 1.5rem;
+    height: 60rem;
+    width: 45rem;
 }
 
 .container-slider .main-slider .swiper-slide img{
@@ -355,7 +361,7 @@ p.text span{
     top: 0;
 }
 
-.container-slider .main-slider .swiper-slide .icons{
+.container-slider .main-slider .swiper-slide .title-bottom{
     position: absolute;
     bottom: -10rem;
     left: 0;
@@ -367,17 +373,22 @@ p.text span{
     font-size: 2rem;
 }
 
-.container-slider .main-slider .swiper-slide .icons a{
-    font-size: 2rem;
-    margin: .5rem 1rem;
-    color: #fff;
-}
-  
-.container-slider .main-slider .swiper-slide .icons a:hover{
+.container-slider .main-slider .swiper-slide .title-bottom:hover{
     color: var(--main-color);
+    cursor: pointer;
 }
-.container-slider .main-slider .swiper-slide:hover .icons{
+
+.container-slider .main-slider .swiper-slide:hover .title-bottom{
     bottom: 0;
+}
+
+.swiper-pagination{
+    position: relative;
+    margin-top: 2rem;
+}
+
+.swiper-pagination-bullet-active{
+    background-color: var(--main-color);
 }
 
 /* Weather forecast */
@@ -385,14 +396,21 @@ p.text span{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    
 }
 
 .container-weather{
+    position: fixed;
+    top: 0;
+    right: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5rem 0;
+    margin-top: 10rem;
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(.5rem);
+    z-index: 1;
 }
 .search-icon {
     margin-right: 5px;
@@ -409,7 +427,6 @@ p.text span{
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid white;
-    margin-right: 5rem;
 }
 
 .container-weather .main-section .search-bar input{
@@ -421,14 +438,14 @@ p.text span{
 }
 
 .container-weather .main-section .search-bar input::placeholder{
-    color: #777;
+    color: #888;
 }
 
 .container-weather .main-section .info-wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 2rem 0;
     font-size: 1.5rem;
 }
 
@@ -439,130 +456,325 @@ p.text span{
 }
 
 /* Login signup */
-.login-signup{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-signup .form{
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(.5rem);
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    text-align: center;
-    gap: 3rem;
-}
-
-.login-signup .form .login-form{
+.login-sign{
     position: relative;
 }
 
-.login-signup .form .close-btn{
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 1rem;
-    font-size: 3rem;
-    margin: 0;
+.login-sign .tag-user{
+    position: relative;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(111,234,246, 0.6);
+    border-radius: 5rem;
 }
 
+.login-sign .tag-user span{
+    margin: 0 1rem;
+    padding: 0 .5rem;
+}
 
-.login-signup .form .login-form,
-.login-signup .form .signup-form{
-    display: flex;
+.login-sign .login-form{
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(2, 3, 75);
-    padding: 4rem 5rem;
-    width: 50rem;
-    height: 50rem;
+    background-color: #214a88;
+    padding: 2rem;
+    z-index: 100;
+    border-radius: 2rem;
+}
+
+.login-sign .login-form.active{
+    display: flex;
+}
+
+.login-sign .login-form input{
+    width: 20rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 3rem;
+}
+
+.login-sign .login-form input:hover{
+    border-left: 1rem solid var(--main-color);
+    border-right: 1rem solid var(--main-color);
+}
+
+.login-sign .login-form .btn{
+    color: #333;
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0;
+    background-color: rgba(111, 234, 246);
+    border-radius: 3rem;
+    padding: .5rem .8rem; 
+    width: 20rem; 
+    margin-top: .5rem;
+    cursor: pointer;
+}
+
+.login-sign .login-form .btn:hover{
+    color: var(--main-color);
     background-color: var(--background-color);
 }
 
-.login-signup .form .signup-form{
+.login-sign .avatar-user{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+}
+
+.login-sign #nav-user{
+    padding-right: 1rem;
+    cursor: pointer;
+}
+
+.option-user{
+    width: 17rem;
+    margin-top: .3rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: #4494A4;
     display: none;
 }
 
-.login-signup .form i{
-    z-index: 2000;
-    color: #ccc;
-    font-size: 6.5rem;
-    margin-bottom: 3rem;
+.option-user.active{
+    display: block;
 }
 
-.login-signup .form .user-input{
-    width: 32rem;
-    height: 5.5rem;
-    margin-bottom: 3rem;
-    background-color: var(--text-color);
-    color: #fff;
-    font-size: 1.8rem;
-    border-radius: 3rem;
-    padding: .5rem 1rem;
-    transition: all .3s ease;
+.option-user p{
+    font-size: 1.4rem;
+    padding: .3rem .7rem;
+    cursor: pointer;
 }
 
-.login-signup .form .user-input::placeholder{
-    color: #333;
+.option-user p:hover{
+    background-color: #20b9d8;
 }
 
-.login-signup .form .user-input:hover,
-.login-signup .form .user-input:focus{
-    border-left: .8rem solid var(--main-color);
-    border-right: .8rem solid var(--main-color);
-    box-shadow: 0 0 5rem rgba(111, 234, 246, 0.3);
+.control-user{
+    display: none;
 }
 
-.login-signup .form .btn{
-    width: 80%;
-    height: auto;
-    background-color: var(--main-color);
-    color: #031327;
-    border-radius: 3rem;
-    opacity: .8;
+.control-user.active{
+    display: block;
 }
 
-.login-signup .form .btn:hover{
-    opacity: 1;
+.login-user{
+    display: none;
 }
 
-.login-signup .form .options-01{
+.login-user.active{
+    display: block;
+}
+
+/* Book Movie */
+.booking{
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
-    width: 40rem;
-    margin-bottom: 3rem;
+    flex-direction: column;
+}
+.content-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3rem;
 }
 
-.login-signup .form .options-01 input{
-    margin-right: .5rem;
+.content-container h3{
+    font-size: 2.6rem;
+    border-bottom: .2rem solid var(--main-color);
 }
 
-.login-signup .form a{
-    color: #777;
-    font-style: italic;
-    font-size: 1.4rem;
+.content-container .main-content{
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
 }
 
-.login-signup .form .options-02,
-.login-signup .form .options-03{
-    color: #777;
-    font-size: 1.4rem;
-    width: 40rem;
+.booking-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
 }
 
-.login-signup .form .options-02 a,
-.login-signup .form .options-03 a{
+.text-content{
+    max-width: 35rem;
+}
+
+.text-content h3{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: .1rem solid var(--text-color);
+}
+
+.editor-content h4{
+    padding: .5rem 0;
+}
+
+.editor-content h4 span{
+    color: var(--text-color);
+    font-size: 1.5rem;
+}
+
+.content-container .main-content img{
+    width: 30rem;
+    height: 40rem;
+    overflow: hidden;
+}
+
+
+/* Toggle Theme color */
+.theme-toggler{
+    position: fixed;
+    top: 10rem;
+    left: -20rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(.5rem);
+    z-index: 2;
+    width: 20rem;
+    text-align: center;
+}
+.theme-toggler.active{
+    left: 0;
+}
+
+.theme-toggler .toggle-btn{
+    position: absolute;
+    top: 0;
+    right: -6rem;
+    padding: 1rem 1.5rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(.5rem);
+}
+
+.theme-toggler .toggle-btn i{
     color: var(--main-color);
+    cursor: pointer;
+    font-size: 3rem;
+    animation: spin 4s linear infinite;
+}
+@keyframes spin{
+    0%{
+        transform: rotate(360deg);
+    }
+}
+
+.theme-toggler .buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.theme-toggler .buttons .theme-btn{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Bill - Payments */
+.pay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--background-color);
+    padding: 5rem 0;
+}
+
+.pay .main-pay{
+    display: flex;
+    justify-content: center;
+    gap: 10rem;
+}
+
+.pay .main-pay .payments h4{
+    font-size: 2rem;
+    border-bottom: .1rem solid var(--main-color);
+}
+
+.pay .main-pay .payments div{
+    margin: 1rem 0;
+}
+
+.pay .main-pay .payments div:hover{
+    color: var(--main-color);
+}
+
+.pay .main-pay .payments .checkbox{
+    border-top: .1rem solid var(--main-color);
+    padding: 1rem 0;
+}
+
+.main-pay .pay-bill{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.main-pay .pay-bill h3{
+    text-align: center;
+    border-bottom: .1rem solid var(--main-color);
+}
+
+.main-pay .pay-bill p{
+    margin: 1rem 0;
+}
+
+.main-pay .pay-bill .pay-total{
+    font-size: 1.7rem;
+    border: .1rem dotted var(--main-color);
+    padding: 1rem;
+}
+
+.clock{
+    background-color: #2c65c7;
+    padding: 2rem;
+}
+
+.clock h4{
+    text-align: center;
+    font-size: 2rem;
+    padding: 1.5rem;
+    background-color: #555;
+    color: var(--main-color);
+}
+
+.pay-btn{
+    font-size: 1.6rem;
+    color: #fff;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #2c65c7;
+    cursor: pointer;
+}
+
+
+.main-pay .pay-bill .countdown-clock{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-pay .pay-bill .countdown-clock p{
+    margin: 0;
+}
+
+.main-pay .pay-bill .countdown-clock div{
+    background-color: #333;
+    padding: 1rem;
 }
