@@ -87,20 +87,17 @@ movieSelect.addEventListener("change", (e) => {
 seats.forEach((element) => {
   element.addEventListener("click", (e) => {
     e.target.classList.toggle("selected");
-    countDown()
+    if(isCountDown){
+      countDown()
+      isCountDown = false
+    }
     updateSelectedCount();
   });
 });
-
+let isCountDown = true
 updateSelectedCount(); //render UI localStorage last loading
 
 // Render from Js
-// let displayMovie = data.map((item)=>{
-//     let nameMovie = ''
-//     return nameMovie +=`<option value="${item.price}">${item.name} ($${item.price})</option>`
-// })
-// movieSelect.innerHTML = displayMovie
-
 // render swiper
 let auto = data.map((e) => {
   let slideMovie = "";
@@ -136,14 +133,14 @@ $$(".title-bottom").forEach((e, index) => {
 $(".login-sign a").addEventListener("click", () => {
   $(".login-form").classList.toggle("active");
 });
-$(".submit-user").addEventListener("click",async (e) => {
+$(".submit-user").addEventListener("click", (e) => {
   e.preventDefault()
-  let idUser = await $("#username").value;
+  let idUser = $("#username").value;
   let imgURL = `http://my.uda.edu.vn/filetailen/anhsv/${idUser}.jpg`;
   $('.control-user').classList.add('active')
   $('.login-user').classList.remove('active')
   $(".login-form").classList.remove("active");
-  $(".avatar-user").innerHTML = `<img loading="lazy" class="avatar-user" src="${imgURL}" alt="">`
+  $(".avatar-user").innerHTML = `<img class="avatar-user" onerror="this.src = './img/User-avatar.png'" src="${imgURL}" alt="">`
   $("#username").value = '';
   $("#password").value = '';
 });
@@ -179,7 +176,7 @@ $(".search-city").addEventListener("change", (e) => {
   $(".search-city").value = ""; //Reset input value
 });
 $(".date-time").innerHTML = weekdays[day];
-$(".time-current").innerHTML = `${date}.${month}.${year}`;
+$(".time-current").innerHTML = `${date}.${month+1}.${year}`;
 
 // Toggler theme
 const toggleBtn = $(".toggle-btn");
