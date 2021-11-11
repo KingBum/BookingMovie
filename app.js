@@ -16,6 +16,22 @@ const date = currentDate.getDate();
 const month = currentDate.getMonth();
 const year = currentDate.getFullYear();
 
+
+function addImageProcess(src){
+  return new Promise((resolve, reject) => {
+    let img = new Image()
+    img.src = src
+    img.onload = () => resolve(src)
+    img.onerror = reject
+  })
+}
+
+async function logImageHeight(imageUrl) {
+  $(".avatar-user").innerHTML = `<img class="avatar-user" onerror="this.src = './img/User-avatar.png'" src="${await addImageProcess(imageUrl)}" alt="">`
+  console.log('height', await addImageProcess(imageUrl))
+}
+
+
 // fake loading and cookie
 const cookieUser = document.cookie.indexOf("userName");
 window.addEventListener("load", () => {
@@ -136,11 +152,10 @@ $(".login-sign a").addEventListener("click", () => {
 $(".submit-user").addEventListener("click", (e) => {
   e.preventDefault()
   let idUser = $("#username").value;
-  let imgURL = `http://my.uda.edu.vn/filetailen/anhsv/${idUser}.jpg`;
+  logImageHeight(`http://my.uda.edu.vn/filetailen/anhsv/${idUser}.jpg`)
   $('.control-user').classList.add('active')
   $('.login-user').classList.remove('active')
   $(".login-form").classList.remove("active");
-  $(".avatar-user").innerHTML = `<img class="avatar-user" onerror="this.src = './img/User-avatar.png'" src="${imgURL}" alt="">`
   $("#username").value = '';
   $("#password").value = '';
 });
@@ -155,8 +170,6 @@ $(".submit-user").addEventListener("click", (e) => {
     $(".login-form").classList.remove("active");
     $(".option-user").classList.remove("active");
   })
-
-
 
 // Call API open weather
 const API_Key = "a1a5fe75a503505ee3af2ce87245750f";
